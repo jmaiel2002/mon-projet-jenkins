@@ -16,19 +16,18 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                sh '''
-                  mvn sonar:sonar \
+                sh """
+                mvn sonar:sonar \
+                  -Dsonar.projectKey=student-management \
                   -Dsonar.host.url=$SONAR_HOST_URL \
                   -Dsonar.login=$SONAR_TOKEN
-                '''
+                """
             }
         }
 
         stage('Docker build & push') {
             steps {
-                sh '''
-                  echo "Docker build & push"
-                '''
+                echo 'Docker build & push (déjà validé dans TP précédent)'
             }
         }
 
